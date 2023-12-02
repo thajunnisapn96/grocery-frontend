@@ -92,10 +92,10 @@ function EditProject({ project }) {
                 size='lg'
                 centered
             >
-                <Modal.Header className='bg-success-subtle' closeButton>
-                    <Modal.Title className='text-warning'>PRODUCTS</Modal.Title>
+                <Modal.Header closeButton>
+                    <Modal.Title>PRODUCT DETAILS</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className='bg-success-subtle'>
+                <Modal.Body>
                     <Row>
                         <Col sm={12} md={6} lg={6} >
                             <label>
@@ -107,16 +107,16 @@ function EditProject({ project }) {
                             <div className='mb-4'><input type="text" className='form-control' placeholder='Product Name' onChange={e=>setProjectDetails({...projectDetails,title:e.target.value})} value={projectDetails.title} id="" /></div>
                             <div className='mb-4'><input type="text" className='form-control' placeholder='Price' onChange={e => setProjectDetails({ ...projectDetails, languages: e.target.value })}  value={projectDetails.languages} id="" /></div>
                             <div className='mb-4'><input type="text" className='form-control' placeholder='Category' onChange={e => setProjectDetails({ ...projectDetails, github: e.target.value })} value={projectDetails.github} id="" /></div>
-                            <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, website: e.target.value })} value={projectDetails.website} placeholder='Availability' name="" id="" /></div>
+                            <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, website: e.target.value })} value={projectDetails.website} placeholder='Stock' name="" id="" /></div>
                         </Col>
                     </Row>
-                    <div className='mt-4'><input type="text" className='form-control' placeholder='Product Description' onChange={e => setProjectDetails({ ...projectDetails, overview: e.target.value })} value={projectDetails.overview} id="" /></div>
+                    <div className='mt-4'><input type="text" className='form-control' placeholder='Product description' onChange={e => setProjectDetails({ ...projectDetails, overview: e.target.value })} value={projectDetails.overview} id="" /></div>
                 </Modal.Body>
-                <Modal.Footer className='bg-success-subtle'>
+                <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
                         CANCEL
                     </Button>
-                    <Button onClick={handleUpdate} variant="warning">Apply Changes</Button>
+                    <Button onClick={handleUpdate} variant="primary">Apply Changes</Button>
                 </Modal.Footer>
             </Modal>
             <ToastContainer position='top-right' autoClose={2000} theme='colored' />

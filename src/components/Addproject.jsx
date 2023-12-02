@@ -67,8 +67,9 @@ function AddProject() {
   }
   return (
     <>
-      <Button variant="" className='btn-outline-success' onClick={handleShow}>
-        ADD PROJECT
+    <div className='add-container  '>
+      <Button  variant="" className='btn-outline-success' onClick={handleShow}>
+        ADD PRODUCT
       </Button>
 
       <Modal
@@ -80,7 +81,7 @@ function AddProject() {
         centered
       >
         <Modal.Header closeButton>
-          <Modal.Title>PROJECT DETAILS</Modal.Title>
+          <Modal.Title>PRODUCT DETAILS</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Row>
@@ -93,13 +94,13 @@ function AddProject() {
               </label>
             </Col>
             <Col className='ps-4 d-flex flex-column justify-content-center' sm={12} md={6} lg={6}>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, title: e.target.value })} placeholder='Project title' value={projectDetails.title} id="" /></div>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, language: e.target.value })} placeholder='Language used' value={projectDetails.language} id="" /></div>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, github: e.target.value })} placeholder='Github Link' value={projectDetails.github} id="" /></div>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, website: e.target.value })} value={projectDetails.website} placeholder='Website Link' name="" id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, title: e.target.value })} placeholder='Product Name' value={projectDetails.title} id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, language: e.target.value })} placeholder='Price' value={projectDetails.language} id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, github: e.target.value })} placeholder='Category' value={projectDetails.github} id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, website: e.target.value })} value={projectDetails.website} placeholder='Availability' name="" id="" /></div>
             </Col>
           </Row>
-          <div className='mt-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, overview: e.target.value })} placeholder='Project OverView' value={projectDetails.overview} id="" /></div>
+          <div className='mt-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, overview: e.target.value })} placeholder='Product Details' value={projectDetails.overview} id="" /></div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -109,6 +110,7 @@ function AddProject() {
         </Modal.Footer>
       </Modal>
       <ToastContainer position='top-right' autoClose={2000} theme='colored' />
+      </div>
     </>
   )
 }

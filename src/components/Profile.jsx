@@ -72,9 +72,9 @@ function Profile() {
     const [open, setOpen] = useState(false);
 
     return (
-        <Card className='p-4'>
+        <Card className='p-4 mt-5'>
             <div className="d-flex justify-content-between">
-                <h5>PROFILE</h5>
+                <h5>ADMIN</h5>
                 <Button onClick={() => setOpen(!open)} variant="success" className="btn-outline-success"><i className="fa-solid fa-check" style={{ color: "#ffff" }}></i></Button>
             </div>
             {/* <Collapse in={open}> */}
@@ -90,10 +90,10 @@ function Profile() {
             </label>
             <Form className='mt-4'>
                 <Form.Group>
-                    <Form.Control value={userProfile.github} onChange={e=>setUserprofile({...userProfile,github:e.target.value})} type="text" placeholder="GitHub" />
+                    <Form.Control value={userProfile.github} onChange={e=>setUserprofile({...userProfile,github:e.target.value})} type="text" placeholder="username" />
                 </Form.Group>
                 <Form.Group className='mt-4'>
-                    <Form.Control value={userProfile.linkedin} onChange={e => setUserprofile({ ...userProfile, linkedin: e.target.value })} required type="text" placeholder="LinkedIn" />
+                    <Form.Control value={userProfile.linkedin} onChange={e => setUserprofile({ ...userProfile, linkedin: e.target.value })} required type="text" placeholder="password" />
                 </Form.Group>
             </Form>
             <div className='pt-2 align-self-center'><Button className='pt-2' onClick={handleProfileUpdate} variant="success">Update</Button></div>

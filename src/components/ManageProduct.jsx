@@ -4,13 +4,13 @@ import AddProject from './Addproject'
 import { deleteProjectAPI, userProjectAPI } from '../services/allAPI'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
-import { addProjectResponseContext, editProjectResponseContext } from '../contexts/ContextShare';
+import { addProjectResponseContext, editProjectResponseContext } from '../contexts/ContextShare'
 import EditProject from './EditProject'
 
 
-function ManageProduct() {
-    const { editProjectResponse } = useContext(editProjectResponseContext);
-    const { addProjectResponse } = useContext(addProjectResponseContext);
+function ManageProject() {
+   const { editProjectResponese } = useContext(editProjectResponseContext)
+    const { addProjectResponse } = useContext(addProjectResponseContext)
     const [userProjects, setUserProjects] = useState([])
     const getUserProject = async () => {
         if (sessionStorage.getItem("token")) {
@@ -43,13 +43,14 @@ function ManageProduct() {
     }
     useEffect(() => {
         getUserProject()
-    }, [addProjectResponse,editProjectResponse])
+    }, [addProjectResponse,editProjectResponese])
     return (
         <>
-            <Card>
+       
+            <Card className='mt-5'>
                 <Card.Body>
-                    <div className='d-flex justify-content-between'>
-                        <Card.Title style={{ fontSize: "30px" }} className='fw-bolder'> MY PROJECT</Card.Title>
+                    <div className='d-flex justify-content-between '>
+                        <Card.Title style={{ fontSize: "30px" }} className='fw-bolder'>PRODUCTS</Card.Title>
                         <div variant="success"><AddProject /></div>
                     </div>
                     {
@@ -60,20 +61,21 @@ function ManageProduct() {
                         <Card.Text key={index} className='mt-1 border p-2 rounded border-success d-flex justify-content-between align-items-center'>
                             <h6>{project?.title}</h6>
                             <div className='d-flex align-items-center'>
-                                <a href={`${project.github}`} rel="noreferrer" target="_blank"><i className="fa-brands fa-github fa-xl" style={{ color: "#04eb00" }}></i></a>
+                                <a href={`${project.github}`} rel="noreferrer" target="_blank"></a>
                                 <div><EditProject project={project}/></div>
                                     <button className='btn' onClick={() => handleDelete(project._id)}><i className="fa-solid fa-trash fa-xl" style={{ color: "#ff1a3c" }}></i></button>
                             </div>
                         </Card.Text>)):
                             <Card.Text className='mt-5 border p-3 rounded border-success d-flex justify-content-between'>
-                                <h5>No Project Uploaded</h5>
+                                <h5>No Products Uploaded</h5>
                             </Card.Text>
                     }
                 </Card.Body>
             </Card>
+            
             <ToastContainer position='top-right' autoClose={2000} theme='colored' />
         </>
     )
 }
 
-export default ManageProduct
+export default ManageProject

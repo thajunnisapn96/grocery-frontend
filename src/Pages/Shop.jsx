@@ -1,49 +1,58 @@
-import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import ProductCard from '../components/ProductCard';
-import Header from '../components/Header';
-import { Link } from 'react-router-dom';
-function Shop() {
-  const groceryProducts = [
-    // Your grocery products data here
-    // Example: { id: 1, name: 'Product 1', price: 10.99, image: 'product1.jpg' },
-    // ...
-  ];
+import React, { useEffect, useState } from 'react'
+import Header from '../components/Header'
+import { Button, Col, Form, Row } from 'react-bootstrap'
+import ProductCard from '../components/ProductCard'
+import { allProjectsAPI } from '../services/allAPI'
+import { Link } from 'react-router-dom'
+
+function Project() {
+  const [searchkey, setSearchKey] = useState("")
+  const [allProjects, setAllProjects] = useState([])
+  const getAllProjects = async ()=>{
+    if(sessionStorage.getItem("token")){
+      const token = sessionStorage.getItem("token")
+      const reqHeader = {
+        "Content-Type":"application/json","Authorization":`bearer ${token}`
+      }
+      const result = await allProjectsAPI(searchkey,reqHeader)
+      if(result.status===200){
+        setAllProjects(result.data)
+      }else{
+        console.log(result);
+      }
+    }
+  }
+  console.log(allProjects);
+  useEffect(()=>{
+    getAllProjects()
+  },[searchkey])
 
   return (
     <>
-      <Header />
-      <Container className="mt-5">
-    
-        <h1 className="text-center mb-5 mt-5 text-warning">Welcome to Grocery Hub</h1>
-        <Row className="justify-content-center mb-4">
-          <Col md={8} lg={6}>
-            <div className="input-group">
-              <input
-                type="text"
-                className="form-control"
-                placeholder="Search for products..."
-                aria-label="Search for products"
-                aria-describedby="search-button"
-              />
-              <button className="btn btn-outline-warning" type="button" id="search-button">
-                Search
-              </button>
-            </div>
-          </Col>
-        </Row>
-        <Row className="row-cols-1 row-cols-md-3 g-4">
-          
-              <Col >
-                <ProductCard  />
-              </Col>
-           
-         
-        </Row>
-       
-      </Container>
+      <Header/>
+      <div className='w-100 text-center mt-5'>
+
+        <h3>All Products</h3>
+        <Form className='w-100 mt-5 d-flex justify-content-center'>
+          <Form.Group className="mb-3 w-50 d-flex " controlId="search">
+            <Form.Control value={searchkey} onChange={e=>setSearchKey(e.target.value)} type="text" placeholder="Search product by category" />
+            <Button className='btn btn-light ms-3'><i className="fa-solid fa-magnifying-glass fa-2xl"></i></Button>
+          </Form.Group>
+          </Form>
+
+          <Row style={{width:"100%"}} className='container m-5'>
+            {
+              allProjects.length>0?allProjects.map((project,index)=>(
+                <Col className='mb-5' key={index} sm={12} md={6} lg={4}>
+                  <ProductCard project={project} />
+                </Col>
+              )) : <div className='Text-light fs-5 text-warning'>Login to View all products | <Link className='text-decoration-none ' to={'/login'}>Login here</Link></div>
+              
+            }
+          </Row>
+      </div>
     </>
-  );
+  )
 }
 
-export default Shop;
+export default Project
