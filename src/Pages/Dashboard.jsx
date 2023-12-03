@@ -6,13 +6,29 @@ import Profile from '../components/Profile'
 import { Link } from 'react-router-dom'
 
 function Dashboard() {
-  const [username, setUsername] = useState()
+  const [username, setUsername] = useState(" ")
   useEffect(() => {
-    if (sessionStorage.getItem("existingUser")) {
-      setUsername(JSON.parse(sessionStorage.getItem("existingUser")).username)
-            
+    const existingUserString = sessionStorage.getItem("registeredUser");
+  
+    try {
+      // Attempt to parse the existingUserString
+      const existingUser = JSON.parse(existingUserString);
+  
+      // Check if existingUser is an object and has a 'username' property
+      if (existingUser && typeof existingUser === 'object' && existingUser.username=='admin') {
+        setUsername(existingUser.username);
+      } else {
+        console.error("Invalid user data in sessionStorage:", existingUser);
+      }
+    } catch (error) {
+      console.error("Error parsing JSON:", error);
     }
-  }, [])
+  }, []);
+  
+  
+  
+  
+  
   return (
     <>
       <Header insideDashboard />
@@ -28,7 +44,7 @@ function Dashboard() {
         </Col>
        
         <Col sm={12} md={4}>
-          <Profile />
+        
         </Col>
       
       </Row>

@@ -6,6 +6,7 @@ import 'slick-carousel/slick/slick-theme.css';
 import './Home.css'; // Import your CSS file for styling
 import { Image } from 'react-bootstrap';
 import WhatsAppPopup from '../components/WhatsAppPopup';
+
 const Home = () => {
   // Sample images for the slider
   const sliderImages = [
@@ -262,7 +263,7 @@ const Home = () => {
 </section>
 </div>
 
-      
+    
     </div>
   );
 };

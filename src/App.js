@@ -14,7 +14,7 @@ import { tokenAuthContext } from './contexts/AuthToken';
 
 function App() {
  
-  const {isAuth} = useContext(tokenAuthContext)
+ const {isAuth} = useContext(tokenAuthContext)
   return (
     <div className='App'>
       <Header/>
@@ -22,7 +22,7 @@ function App() {
         <Route path={'/'} element={<Home />} />
         <Route path={'/register'} element={<Auth register />} />
         <Route path={'/login'} element={<Auth login />} />
-        <Route path={'/dashboard'} element={isAuth? <Dashboard />:<Home/>} />
+        <Route path={'/dashboard'} element={<Dashboard/>} />
         <Route path={'/shop'} element={<Shop />} />
         <Route path={'/wishlist'} element={<Wishlist />} />
         <Route path={'/cart'} element={<Cart />} />

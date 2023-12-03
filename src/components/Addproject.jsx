@@ -109,6 +109,7 @@ function AddProject() {
           <Button onClick={handleAdd} variant="primary">ADD</Button>
         </Modal.Footer>
       </Modal>
+      
       <ToastContainer position='top-right' autoClose={2000} theme='colored' />
       </div>
     </>

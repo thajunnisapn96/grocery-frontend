@@ -1,6 +1,5 @@
-import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-
+import { useContext } from 'react'
 import { Button, Form } from 'react-bootstrap'
 import { useState } from 'react'
 import { loginAPI, registerAPI } from '../services/allAPI'
@@ -14,7 +13,7 @@ function Auth({ register }) {
     const {setIsAuth} = useContext(tokenAuthContext)
     const navigate = useNavigate()
     const [userData, setUserData] = useState({
-        username: "", email: "", passwrd: ""
+        username: "", email: "", password: ""
     })
     const handleRegister = async (e) => {
         e.preventDefault()
@@ -27,7 +26,7 @@ function Auth({ register }) {
             if (result.status === 200) {
                 toast.success(`${result.data.username} has registered`)
                 setUserData({
-                    username: "", email: "", passwrd: ""
+                    username: "", email: "", password: ""
                 })
                 navigate('/login')
             } else {
@@ -44,8 +43,11 @@ function Auth({ register }) {
         } else {
             const result = await loginAPI(userData)
             if (result.status === 200) {
-                sessionStorage.setItem("existingUser", JSON.stringify(result.data.existingUser))
+                sessionStorage.setItem("existingUser", JSON.stringify(result.data.registeredUser))
+                console.log(result.data.token)
                 sessionStorage.setItem("token", result.data.token)
+                console.log(result.data.token)
+
                 setIsAuth(true)
                 setUserData({
                     email: "", password: ""
@@ -116,3 +118,4 @@ function Auth({ register }) {
 
     )}
     export default Auth;
+
