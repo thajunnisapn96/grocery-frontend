@@ -36,29 +36,43 @@ function Auth({ register }) {
     }
     // LOGIN
     const handleLogin = async (e) => {
-        e.preventDefault()
-        const { email, password } = userData
+        e.preventDefault();
+        const { email, password } = userData;
+    
         if (!email || !password) {
-            toast.error("Fill the form completely")
+          toast.error("Fill the form completely");
         } else {
-            const result = await loginAPI(userData)
+          // Check if the provided credentials match the admin credentials
+          if (email === "admin@gmail.com" && password === "1234") {
+            // Redirect to the dashboard
+            alert("admin login")
+            navigate('/dashboard');
+          } else {
+            // If not admin credentials, proceed with the regular login logic
+            const result = await loginAPI(userData);
+    
             if (result.status === 200) {
-                sessionStorage.setItem("existingUser", JSON.stringify(result.data.registeredUser))
-                console.log(result.data.token)
-                sessionStorage.setItem("token", result.data.token)
-                console.log(result.data.token)
-
-                setIsAuth(true)
-                setUserData({
-                    email: "", password: ""
-                })
-                navigate('/')
+              sessionStorage.setItem(
+                "existingUser",
+                JSON.stringify(result.data.registeredUser)
+              );
+              sessionStorage.setItem("token", result.data.token);
+    
+              setIsAuth(true);
+              setUserData({
+                email: "",
+                password: "",
+              });
+              navigate('/shop');
+              alert("login successful")
             } else {
-                toast.warning(result.response.data)
-                console.log(result);
+              toast.warning(result.response.data);
+              console.log(result);
             }
+          }
         }
-    }
+      };
+    
 
 
     const isRegisterForm = register ? true : false
@@ -76,7 +90,7 @@ function Auth({ register }) {
             <div className="col-lg-6">
               <div className="d-flex align-items-center flex-column">
                 <h1 className="fw-bolder text-success mt-2"> {
-                                isRegisterForm ? 'Sign up to your account' : 'User Login'
+                                isRegisterForm ? 'Sign up to your account' : 'Login Here'
                             }</h1>
 
 <Form>
@@ -89,21 +103,32 @@ function Auth({ register }) {
                             <Form.Group className="mb-3" controlId="formBasicEmail">
                                 <Form.Control type="email" value={userData.email} onChange={e => setUserData({ ...userData, email: e.target.value })} placeholder="Email Address" />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Group className="mb-3" controlId="password">
                                 <Form.Control type="password" value={userData.password} onChange={e => setUserData({ ...userData, password: e.target.value })} placeholder="Password" />
                             </Form.Group>
 
                             {
-                                isRegisterForm ?
-                                    <div>
-                                        <Button type='submit' onClick={handleRegister} className="btn-primary btn">Register</Button>
-                                        <p>Existing User? click here <Link to='/login'>Login</Link></p>
-                                    </div> :
-                                    <div>
-                                        <Button type='submit' onClick={handleLogin} className="btn-primary btn">Login</Button>
-                                        <p>New User? click here <Link to={'/register'}>Register</Link></p>
-                                    </div>
-                            }
+  isRegisterForm ? (
+    <div>
+      <Button type='submit' onClick={handleRegister} className="btn-primary btn">
+        Register
+      </Button>
+      <div>
+        Existing User? click here <Link to='/login'>Login</Link>
+      </div>
+    </div>
+  ) : (
+    <div>
+      <Button type='submit' onClick={handleLogin} className="btn-primary btn">
+        Login
+      </Button>
+      <div>
+        New User? click here <Link to={'/register'}>Register</Link>
+      </div>
+    </div>
+  )
+}
+
                         </Form>
                 </div>
               </div>

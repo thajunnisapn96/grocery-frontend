@@ -95,8 +95,8 @@ function AddProject() {
             </Col>
             <Col className='ps-4 d-flex flex-column justify-content-center' sm={12} md={6} lg={6}>
               <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, title: e.target.value })} placeholder='Product Name' value={projectDetails.title} id="" /></div>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, language: e.target.value })} placeholder='Price' value={projectDetails.language} id="" /></div>
-              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, github: e.target.value })} placeholder='Category' value={projectDetails.github} id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, language: e.target.value })} placeholder='Category' value={projectDetails.language} id="" /></div>
+              <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, github: e.target.value })} placeholder='Price' value={projectDetails.github} id="" /></div>
               <div className='mb-4'><input type="text" className='form-control' onChange={e => setProjectDetails({ ...projectDetails, website: e.target.value })} value={projectDetails.website} placeholder='Availability' name="" id="" /></div>
             </Col>
           </Row>

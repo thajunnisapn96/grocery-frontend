@@ -5,7 +5,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import './Home.css'; // Import your CSS file for styling
 import { Image } from 'react-bootstrap';
-import WhatsAppPopup from '../components/WhatsAppPopup';
+import WhatsAppButton from '../components/WhatsappButton';
 
 const Home = () => {
   // Sample images for the slider
@@ -25,16 +25,7 @@ const Home = () => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
-  const [isWhatsAppPopupOpen, setWhatsAppPopupOpen] = useState(false);
-
-  const openWhatsAppPopup = () => {
-    setWhatsAppPopupOpen(true);
-  };
-
-  const closeWhatsAppPopup = () => {
-    setWhatsAppPopupOpen(false);
-  };
-
+ 
   return (
    
     
@@ -56,14 +47,9 @@ const Home = () => {
           </Link>
         </div>
       </section>
-  {/* WhatsApp Button */}
-  <div className="whatsapp-button" onClick={openWhatsAppPopup}>
-
-      </div>
-
-      {/* WhatsApp Popup */}
-      <WhatsAppPopup isOpen={isWhatsAppPopupOpen} onClose={closeWhatsAppPopup} />
- 
+      
+ {/* WhatsApp Button */}
+ <WhatsAppButton />
       {/* Features Section */}
       <section className="features">
         <div className="feature">
@@ -209,7 +195,7 @@ const Home = () => {
     <div className="category-card">
       <Image className="shadow" src="./assets/42.jpg" alt="New Category 2" fluid />
       <h3 className="mt-2 fw-bold category-name text-center">Fresh Vegetables</h3>
-      <Link to="/shop/fresh-vegetables" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
+      <Link to="/shop" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
         Shop Now
       </Link>
     </div>
@@ -220,7 +206,7 @@ const Home = () => {
     <div className="category-card">
       <Image className="shadow" src="./assets/43.jpg" alt="New Category 3" fluid />
       <h3 className="mt-2 fw-bold category-name text-center">Cleaning & Hygiene</h3>
-      <Link to="/shop/cleaning-hygiene" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
+      <Link to="/shop" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
         Shop Now
       </Link>
     </div>
@@ -231,7 +217,7 @@ const Home = () => {
     <div className="category-card">
       <Image className="shadow" src="./assets/44.jpg" alt="New Category 4" fluid />
       <h3 className="mt-2 fw-bold category-name text-center">Personal Care</h3>
-      <Link to="/shop/personal-care" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
+      <Link to="/shop" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
         Shop Now
       </Link>
     </div>
@@ -242,7 +228,7 @@ const Home = () => {
     <div className="category-card">
       <Image className="shadow" src="./assets/45.jpg" alt="New Category 5" fluid />
       <h3 className="mt-2 fw-bold category-name text-center">Dry Fruits & Chocolates</h3>
-      <Link to="/shop/dry-fruits-chocolates" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
+      <Link to="/shop" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
         Shop Now
       </Link>
     </div>
@@ -253,7 +239,7 @@ const Home = () => {
     <div className="category-card">
       <Image className="shadow" src="./assets/46.jpg" alt="New Category 7" fluid />
       <h3 className="mt-2 fw-bold category-name text-center">Meat & Poultry</h3>
-      <Link to="/shop/meat-poultry" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
+      <Link to="/shop" className="btn btn-outline-success" style={{ display: 'block', margin: '0 auto' }}>
         Shop Now
       </Link>
     </div>

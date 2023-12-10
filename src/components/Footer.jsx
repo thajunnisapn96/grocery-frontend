@@ -21,9 +21,9 @@ function Footer() {
         </div>
         <div className="guides d-flex flex-column">
           <h4>Guides</h4>
-          <Link to={'/grocery-guide'} style={{ textDecoration: 'none', color: 'white' }}>Grocery Shopping Tips</Link>
-          <Link to={'/recipes'} style={{ textDecoration: 'none', color: 'white' }}>Recipes</Link>
-          <Link to={'/delivery-info'} style={{ textDecoration: 'none', color: 'white' }}>Delivery Information</Link>
+          <Link to={'https://www.asweetpeachef.com/grocery-shopping-tips/'} style={{ textDecoration: 'none', color: 'white' }}>Grocery Shopping Tips</Link>
+          <Link to={'https://www.allrecipes.com/recipes/78/breakfast-and-brunch/'} style={{ textDecoration: 'none', color: 'white' }}>Recipes</Link>
+          <Link to={'/https://www.instagram.com/zamzam_fresh/'} style={{ textDecoration: 'none', color: 'white' }}>Delivery Information</Link>
         </div>
         <div className="contact d-flex flex-column flex-wrap">
           <h4>Contact Us</h4>
@@ -32,8 +32,8 @@ function Footer() {
             <div className="btn btn-warning ms-3"><i className="fa-solid fa-arrow-right"></i></div>
           </div>
           <div className="icons mt-3 d-flex justify-content-evenly fs-4">
-            <a href={'https://linkedin.com/'} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-linkedin-in"></i></a>
-            <a href={'https://twitter.com/'} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-twitter"></i></a>
+            <a href={'https://instagram.com/'} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-instagram"></i></a>
+          
             <a href={'https://facebook.com/'} target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none', color: 'white' }}><i className="fa-brands fa-facebook-f"></i></a>
             <a href={'mailto:info@groceryhub.com'} style={{ textDecoration: 'none', color: 'white' }}><i className="fa-regular fa-envelope"></i></a>
           </div>

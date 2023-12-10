@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { tokenAuthContext } from '../contexts/AuthToken'
 import { Badge } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 function Header({insideDashboard}) {
@@ -16,6 +17,10 @@ function Header({insideDashboard}) {
       navigate('/')
 
   }
+
+  const wishlist=useSelector((state)=>state.wishlistReducer)
+  const cart=useSelector((state)=>state.cartReducer)
+ 
   return (
     <Navbar style={{zIndex:'1'}} expand="lg" className="bg-primary position-fixed top-0 w-100 mb-5">
       <Container>
@@ -28,14 +33,14 @@ function Header({insideDashboard}) {
                 <Link to={'/wishlist'} className='d-flex align-items-center' style={{textDecoration:'none',
                 color:'white',fontWeight:'bold'}}>
                 <i class="fa-solid fa-heart text-danger-subtle me-2"></i>Wishlist
-            <Badge className='ms-2 rounded' bg='light'></Badge>
+            <Badge className='ms-2 rounded' bg='light'>{wishlist.length}</Badge>
             </Link>
             </Nav.Link>
             <Nav.Link className='btn border rounded ms-2'>
                 <Link to={'/cart'} className='d-flex align-items-center' style={{textDecoration:'none',
                 color:'white',fontWeight:'bold'}}>
                 <i class="fa-solid fa-cart-shopping text-warning-subtle  me-2"></i>Cart
-            <Badge className='ms-2 rounded' bg='light'></Badge>
+            <Badge className='ms-2 rounded' bg='light'>{cart.length}</Badge>
             </Link>
             </Nav.Link>
             <Nav.Link className='btn btn-success ms-4'>
@@ -45,10 +50,15 @@ function Header({insideDashboard}) {
   </Link>
 </Nav.Link>
 <Nav.Link className='btn btn-warning ms-4'>
-  <Link to={'/dashboard'} className='d-flex align-items-center' style={{textDecoration:'none', color:'white', fontWeight:'bold'}}>
-    <i className="fa-solid fa-gear text-warning me-2"></i>
-    <Badge className='ms-2 rounded-circle' bg='light'></Badge>
-  </Link>
+<Link
+      to={'/login'}
+      className='d-flex align-items-center'
+      style={{ textDecoration: 'none', color: 'white', fontWeight: 'bold' }}
+      
+    >
+      <i className="fa-solid fa-gear text-warning me-2"></i>
+      <Badge className='ms-2 rounded-circle' bg='light'></Badge>
+    </Link>
 </Nav.Link>
 
                       </Nav>

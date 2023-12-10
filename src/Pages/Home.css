@@ -178,4 +178,43 @@ body {
   }
   
   /* Add more styles as needed */
-  
+ /* ... (your existing styles) */
+
+/* Product Cards Animation */
+.product-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.product-card:hover {
+  transform: scale(1.1);
+}
+
+/* Step Cards Animation */
+.step-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.step-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Category Cards Animation */
+.category-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.category-card:hover {
+  transform: scale(1.1);
+}
+
+/* ... (your existing styles) */
+/* Special Offers Animation */
+.deal-card {
+  transition: transform 0.3s ease-in-out;
+}
+
+.deal-card:hover {
+  transform: scale(1.1);
+}
+
+/* ... (your existing styles) */
